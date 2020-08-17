@@ -1,0 +1,4 @@
+# Mapping
+   /usr/local/package/bowtie2/2.2.2/bowtie2 -x /home/yi-maru/mystudy/Reference/hg19/Homo_sapiens/UCSC/hg19/Sequence/Bowtie2Index/genome -U /home/yi-maru/mystudy/mC/ES/ES_input/SRR042411.fastq -N 0 -S SRR042411_mapped.sam
+
+   grep -v "XS" /home/yi-maru/mystudy/mC/ES/ES_input/SRR042411_mapped.sam > /home/yi-maru/mystudy/mC/ES/ES_input/SRR042411_uniq_mapped.sam

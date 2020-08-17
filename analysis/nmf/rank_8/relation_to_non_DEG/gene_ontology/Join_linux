@@ -1,0 +1,21 @@
+# sort gene_number
+    sort -k 1,1 /home/yi-maru/integrated_research/nmf/intensity/genebody_plus_promoter/rank_8/geneexp_in_each_basis/whole_geneexp_of_basis_8.txt | cat > out1.txt
+    sort -k 1,1 /home/yi-maru/RNA-seq/DEG_homer/fibro_vs_ES/DEG_homer_ES_up.txt | cat > out2.txt
+    sort -k 1,1 /home/yi-maru/RNA-seq/DEG_homer/fibro_vs_ES/DEG_homer_ES_down.txt | cat > out3.txt
+
+
+# join Readcount_data   (Ref html: http://qiita.com/isseium/items/20eb6802898d9b1ba2b4)
+
+  join -v 1 -1 1 -2 1 out1.txt out2.txt > tmp1.count.txt
+  join -v 1 -1 1 -2 1 tmp1.count.txt out3.txt > tmp.count.txt
+  echo "Gene_name" > genes.txt
+  cat tmp.count.txt >> genes.txt
+
+  rm tmp* out*
+ 
+  
+
+
+
+
+

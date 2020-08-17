@@ -1,0 +1,37 @@
+# sort gene_number
+    sort -k 1,1 DEG_homer_ES_up.txt | cat > out1.txt
+    sort -k 1,1 DEG_homer_ES_down.txt | cat > out2.txt
+    sort -k 1,1 non_DEG_homer.txt | cat > out3.txt
+    sort -k 3,3 gene_exp.diff | cat > out4.txt
+
+
+# join Readcount_data
+
+  join -1 1 -2 3 -o 0 2.4 out1.txt out4.txt > tmp.count.txt
+  echo "Gene_name locus" > DEG_homer_ES_up_locusplus.txt
+  cat tmp.count.txt >> DEG_homer_ES_up_locusplus.txt
+
+  join -1 1 -2 3 -o 0 2.4 out2.txt out4.txt > tmp.count.txt
+  echo "Gene_name locus" > DEG_homer_ES_down_locusplus.txt
+  cat tmp.count.txt >> DEG_homer_ES_down_locusplus.txt
+
+  join -1 1 -2 3 -o 0 2.4 out3.txt out4.txt > tmp.count.txt
+  echo "Gene_name locus" > non_DEG_homer_locusplus.txt
+  cat tmp.count.txt >> non_DEG_homer_locusplus.txt
+
+  rm tmp*
+  rm out*
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+

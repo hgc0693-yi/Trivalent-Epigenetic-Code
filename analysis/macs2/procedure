@@ -1,0 +1,5 @@
+/home/yi-maru/anaconda3/bin/macs2 callpeak -c SRR299099_uniq_mapped_sorted.bam -t SRR299100_uniq_mapped_sorted.bam -p 1e-4 -f BAM -g 3000000000 -n macs2_peakcall &
+
+
+### convert homer_peak_file igv_file ### 
+pos2bed.pl regions.txt > HOMER.bed

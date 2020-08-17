@@ -1,0 +1,10 @@
+# remove header_row
+
+  tail -n +2 5hMC_annotated_H1.txt > nonhead_5hMC_annotated_H1.txt
+
+# sort gene_name
+
+  sort -k 16,16 -t $'\t' nonhead_5hMC_annotated_H1.txt | cat > 5hMC_annotated_H1_sorted.txt
+
+  rm nonhead*
+

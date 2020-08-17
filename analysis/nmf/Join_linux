@@ -1,0 +1,26 @@
+# remove header_row
+    tail -n +2  /home/yi-maru/integrated_research/histone_modification_5hmC_geneexp_correlation/whole_genes/figures/correlation_matrix/divide_into_genomic_feature/genebody/hmC_5mC_whole_active_plus_repressive_histone_H1.txt > nonhead_genebody.txt
+    tail -n +2  /home/yi-maru/integrated_research/histone_modification_5hmC_geneexp_correlation/whole_genes/figures/correlation_matrix/divide_into_genomic_feature/promoter/hmC_5mC_whole_active_plus_repressive_histone_H1.txt > nonhead_promoter.txt
+
+
+# sort gene_number
+    sort -k 1,1 nonhead_genebody.txt | cat > out1.txt
+    sort -k 1,1 nonhead_promoter.txt | cat > out2.txt
+
+
+# join Readcount_data
+  join -a 1 -a 2 -1 1 -2 1 -o 0 1.2 1.3 1.4 1.5 1.6 1.7 1.8 1.9 1.10 1.11 1.12 1.13 1.14 1.15 1.16 1.17 1.18 1.19 1.20 2.2 2.3 2.4 2.5 2.6 2.7 2.8 2.9 2.10 2.11 2.12 2.13 2.14 2.15 2.16 2.17 2.18 2.19 2.20 -e "0" out1.txt out2.txt > tmp.count.txt
+
+
+  echo "Gene_name genebody_H1_5hmC genebody_H1_5mC genebody_H1_H2AK5ac genebody_H1_H2BK5ac genebody_H1_H2BK12ac genebody_H1_H2BK15ac genebody_H1_H3K4me1 genebody_H1_H3K4me2 genebody_H1_H3K4me3 genebody_H1_H3K4ac genebody_H1_H3K9ac genebody_H1_H4K8ac genebody_H1_H3K14ac genebody_H1_H3K18ac genebody_H1_H3K23ac genebody_H1_H3K27ac genebody_H1_H3K9me3 genebody_H1_H3K27me3 genebody_H1_H4K20me1 promoter_H1_5hmC promoter_H1_5mC promoter_H1_H2AK5ac promoter_H1_H2BK5ac promoter_H1_H2BK12ac promoter_H1_H2BK15ac promoter_H1_H3K4me1 promoter_H1_H3K4me2 promoter_H1_H3K4me3 promoter_H1_H3K4ac promoter_H1_H3K9ac promoter_H1_H4K8ac promoter_H1_H3K14ac promoter_H1_H3K18ac promoter_H1_H3K23ac promoter_H1_H3K27ac promoter_H1_H3K9me3 promoter_H1_H3K27me3 promoter_H1_H4K20me1" > genebody_promoter.txt
+
+  cat tmp.count.txt >> genebody_promoter.txt
+  rm tmp* out* nonhead*
+
+ 
+  
+
+
+
+
+

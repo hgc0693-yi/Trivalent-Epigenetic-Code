@@ -1,0 +1,14 @@
+# Quality control
+   /home/yi-maru/Software/prinseq-lite-0.20.4/prinseq-lite.pl -min_qual_mean 20 -fastq /home/yi-maru/TAB-seq/H1/single/qualcont_1step/H1_SRR449064/SRR449064.fastq -out_format 3 -out_good /home/yi-maru/TAB-seq/H1/single/qualcont_1step/H1_SRR449064/SRR449064_minqualmean
+
+   /home/yi-maru/Software/prinseq-lite-0.20.4/prinseq-lite.pl -trim_right 7 -fastq /home/yi-maru/TAB-seq/H1/single/qualcont_1step/H1_SRR449064/SRR449064_minqualmean.fastq -out_format 3 -out_good /home/yi-maru/TAB-seq/H1/single/qualcont_1step/H1_SRR449064/SRR449064_after_qualcont
+
+# Mapping
+   /home/yi-maru/Software/bismark_v0.14.3/bismark -q --bowtie2 --path_to_bowtie /home/yi-maru/Software/bowtie2-2.2.5 /home/yi-maru/mystudy/doctor/hmC/TAB-seq/Reference_hg19_Bisulfite /home/yi-maru/TAB-seq/H1/single/qualcont_1step/H1_SRR449064/SRR449064_after_qualcont.fastq
+
+# Deduplicate
+   /home/yi-maru/Software/bismark_v0.14.3/deduplicate_bismark -s /home/yi-maru/TAB-seq/H1/single/qualcont_1step/H1_SRR449064/SRR449064_after_qualcont.fastq_bismark_bt2.bam
+
+# Sam to bam
+   samtools view -bS SRR449064_after_qualcont.fastq_bismark_bt2.deduplicated.sam > SRR449064_after_qualcont.fastq_bismark_bt2.deduplicated.bam
+

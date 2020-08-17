@@ -1,0 +1,9 @@
+# remove header_row
+
+  tail -n +2 /home/yi-maru/histone/research/peakcall_annotation/genebody/H2AK5ac/ES_peakann/ES_1_H1_tagdir/peak_annotation_result.txt > /home/yi-maru/histone/research/peakcall_annotation/genebody/H2AK5ac/ES_peakann/ES_1_H1_tagdir/nonhead_peak_annotation_result.txt
+
+# sort gene_name
+
+  sort -k 16,16 -t $'\t'  /home/yi-maru/histone/research/peakcall_annotation/genebody/H2AK5ac/ES_peakann/ES_1_H1_tagdir/nonhead_peak_annotation_result.txt | cat > /home/yi-maru/histone/research/peakcall_annotation/genebody/H2AK5ac/ES_peakann/ES_1_H1_tagdir/peak_annotation_result_sorted.txt
+
+  rm /home/yi-maru/histone/research/peakcall_annotation/genebody/H2AK5ac/ES_peakann/ES_1_H1_tagdir/nonhead*

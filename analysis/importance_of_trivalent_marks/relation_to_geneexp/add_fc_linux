@@ -1,0 +1,46 @@
+# sort gene_number
+
+  sort -k 1,1 /home/yi-maru/revision_for_PlosOne/importance_of_trivalent_marks/prepared_data_for_5hmC.txt | cat > out1.txt
+  sort -k 1,1 /home/yi-maru/revision_for_PlosOne/importance_of_trivalent_marks/prepared_data_for_H3K4me1.txt | cat > out2.txt
+  sort -k 1,1 /home/yi-maru/revision_for_PlosOne/importance_of_trivalent_marks/prepared_data_for_H4K8ac.txt | cat > out3.txt
+
+  sort -k 1,1 hmC_plus_H3K4me1_minus_H4K8ac_minus.txt | cat > out4.txt
+  sort -k 1,1 H3K4me1_plus_hmC_minus_H4K8ac_minus.txt | cat > out5.txt
+  sort -k 1,1 H4K8ac_plus_hmC_minus_H3K4me1_minus.txt | cat > out6.txt
+  sort -k 1,1 hmC_plus_H3K4me1_plus_H4K8ac_minus.txt | cat > out7.txt
+  sort -k 1,1 hmC_plus_H3K4me1_minus_H4K8ac_plus.txt | cat > out8.txt
+  sort -k 1,1 hmC_minus_H3K4me1_plus_H4K8ac_plus.txt | cat > out9.txt
+  sort -k 1,1 hmC_plus_H3K4me1_plus_H4K8ac_plus.txt | cat > out10.txt
+
+
+# join Readcount_data   (Ref html: http://qiita.com/isseium/items/20eb6802898d9b1ba2b4)
+
+  join -a 2 -1 1 -2 1 -o 0 1.2 out1.txt out4.txt > tmp.count.txt
+  cat tmp.count.txt > hmC_plus_H3K4me1_minus_H4K8ac_minus_expfc.txt
+
+  join -a 2 -1 1 -2 1 -o 0 1.2 out2.txt out5.txt > tmp.count.txt
+  cat tmp.count.txt > H3K4me1_plus_hmC_minus_H4K8ac_minus_expfc.txt
+
+  join -a 2 -1 1 -2 1 -o 0 1.2 out3.txt out6.txt > tmp.count.txt
+  cat tmp.count.txt > H4K8ac_plus_hmC_minus_H3K4me1_minus_expfc.txt
+
+  join -a 2 -1 1 -2 1 -o 0 1.2 out1.txt out7.txt > tmp.count.txt
+  cat tmp.count.txt > hmC_plus_H3K4me1_plus_H4K8ac_minus_expfc.txt
+
+  join -a 2 -1 1 -2 1 -o 0 1.2 out1.txt out8.txt > tmp.count.txt
+  cat tmp.count.txt > hmC_plus_H3K4me1_minus_H4K8ac_plus_expfc.txt
+
+  join -a 2 -1 1 -2 1 -o 0 1.2 out2.txt out9.txt > tmp.count.txt
+  cat tmp.count.txt > hmC_minus_H3K4me1_plus_H4K8ac_plus_expfc.txt
+
+  join -a 2 -1 1 -2 1 -o 0 1.2 out1.txt out10.txt > tmp.count.txt
+  cat tmp.count.txt > hmC_plus_H3K4me1_plus_H4K8ac_plus_expfc.txt
+
+  rm tmp* out*
+ 
+  
+
+
+
+
+

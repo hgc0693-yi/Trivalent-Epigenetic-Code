@@ -1,0 +1,15 @@
+export NGSPLOT=/home/yi-maru/Software/ngs_plot/ngsplot
+
+export PATH="home/yi-maru/R/x86_64-unknown-linux-gnu-library/2.15:$PATH"
+
+export PATH="/home/yi-maru/Software/ngs_plot/ngsplot/bin:$PATH"
+
+
+echo 'SRR453530_uniq_mapped_sorted.bam DEG_homer_ES_up_locusplus.bed "fibroblast_5hmC"' > list.txt
+
+echo 'SRR299100_uniq_mapped_sorted.bam DEG_homer_ES_up_locusplus.bed "hESC_5hmC"' >> list.txt
+
+ngs.plot.r -G hg19 -R bed -C list.txt -O IMR90_H1_DEG_homer_ES_up -L 2000 -FL 50 -FS 15 -XYL 0
+
+evince IMR90_H1_DEG_homer_ES_up.avgprof.pdf
+

@@ -1,0 +1,17 @@
+# Create tag directory
+  /home/yi-maru/Software/homer/bin/makeTagDirectory mouse_ES_2_tagdir -tbp 1 pre_makeTagDirectory_mouse_ES_2_sample.bed -format bed &
+
+  /home/yi-maru/Software/homer/bin/makeTagDirectory mouse_ES_2_input_tagdir -tbp 1 pre_makeTagDirectory_mouse_ES_2_input.bed -format bed &
+
+
+# Find peak & normalization(10000000 reads)
+  /home/yi-maru/Software/homer/bin/findPeaks mouse_ES_2_tagdir -style histone -o auto -gsize 3300000000 -i mouse_ES_2_input_tagdir &
+
+# annotation & quantifying
+  /home/yi-maru/Software/homer/bin/annotatePeaks.pl mouse_ES_2_tagdir/regions.txt mm9 -d mouse_ES_2_tagdir > mouse_ES_2_tagdir/peak_annotation_result.txt &
+
+
+
+
+
+

@@ -1,0 +1,42 @@
+# Quality check
+   /usr/local/package/fastqc/FastQC.0.11.2/fastqc -f fastq /home/yi-maru/mystudy/hmC/fibro_hg19/IMR90_input/SRR453512.fastq &
+
+
+### Quality control
+# Remove when mean of reads' quality is less than 20 
+   /home/yi-maru/Software/prinseq-lite-0.20.4/prinseq-lite.pl -min_qual_mean 20 -fastq /home/yi-maru/mystudy/hmC/fibro_hg19/IMR90_input/SRR453512.fastq -out_format 3 -out_good /home/yi-maru/mystudy/hmC/fibro_hg19/IMR90_input/SRR453512_minqualmean ;  
+
+# Remove terminal which has the quality less than 20 
+   /home/yi-maru/Software/prinseq-lite-0.20.4/prinseq-lite.pl -trim_qual_right 20 -fastq /home/yi-maru/mystudy/hmC/fibro_hg19/IMR90_input/SRR453512_minqualmean.fastq -out_format 3 -out_good /home/yi-maru/mystudy/hmC/fibro_hg19/IMR90_input/SRR453512_trimqualright ; 
+
+# Remove when the read length is less than 50 
+   /home/yi-maru/Software/prinseq-lite-0.20.4/prinseq-lite.pl -min_len 50 -fastq /home/yi-maru/mystudy/hmC/fibro_hg19/IMR90_input/SRR453512_trimqualright.fastq -out_format 3 -out_good /home/yi-maru/mystudy/hmC/fibro_hg19/IMR90_input/SRR453512_after_qualcont 
+
+
+
+# Quality check(second)
+   /usr/local/package/fastqc/FastQC.0.11.2/fastqc -f fastq /home/yi-maru/mystudy/hmC/fibro_hg19/IMR90_input/SRR453512_after_qualcont.fastq &
+
+# Mapping
+   /usr/local/package/bowtie2/2.2.2/bowtie2 -x /home/yi-maru/mystudy/Reference/hg19/Homo_sapiens/UCSC/hg19/Sequence/Bowtie2Index/genome -U /home/yi-maru/mystudy/hmC/fibro_hg19/IMR90_input/SRR453512_after_qualcont.fastq -N 0 -S SRR453512_mapped.sam
+
+   grep -v "XS" /home/yi-maru/mystudy/hmC/fibro_hg19/IMR90_input/SRR453512_mapped.sam > /home/yi-maru/mystudy/hmC/fibro_hg19/IMR90_input/SRR453512_uniq_mapped.sam
+
+# sam to bam
+  samtools view -bS SRR453512_uniq_mapped.sam > SRR453512_uniq_mapped.bam &
+
+# sort bam_file
+  samtools sort SRR453512_uniq_mapped.bam SRR453512_uniq_mapped_sorted &
+
+# bam index
+  samtools index SRR453512_uniq_mapped_sorted.bam
+
+
+
+
+  
+
+
+
+
+

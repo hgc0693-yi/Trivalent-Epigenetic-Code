@@ -1,0 +1,35 @@
+# Quality check
+ /usr/local/package/fastqc/0.11.8/fastqc -f fastq SRR524838.fastq
+ /usr/local/package/fastqc/0.11.8/fastqc -f fastq SRR524838_after_qualcont.fastq
+
+# Quality control
+/home/yi-maru/Software/prinseq-lite-0.20.4/prinseq-lite.pl -min_qual_mean 20 -fastq SRR524838.fastq -out_format 3 -out_good SRR524838_after_qualcont
+
+
+# Mapping
+   /usr/local/package/bowtie/2.3.4.3/bowtie2 -x /home/yi-maru/mystudy/doctor/Reference/Mus_musculus/UCSC/mm9/Sequence/Bowtie2Index/genome -U /home/yi-maru/histone/mouse/H3K4me1/ES/sample/SRR524838_after_qualcont.fastq -N 0 -S SRR524838_mapped.sam
+
+
+
+# remove multiple-mapped read
+  grep -v "XS" /home/yi-maru/histone/mouse/H3K4me1/ES/sample/SRR524838_mapped.sam > /home/yi-maru/histone/mouse/H3K4me1/ES/sample/SRR524838_uniq_mapped.sam
+
+
+
+# sam to bam
+  samtools view -bS SRR524838_uniq_mapped.sam > SRR524838_uniq_mapped.bam
+
+# sort bam_file
+#  samtools sort SRR453526_uniq_mapped.bam SRR453526_uniq_mapped_sorted
+
+# bam index
+#  samtools index SRR453526_uniq_mapped_sorted.bam
+
+
+
+  
+
+
+
+
+

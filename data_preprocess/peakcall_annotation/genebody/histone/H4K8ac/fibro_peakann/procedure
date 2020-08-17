@@ -1,0 +1,15 @@
+# Create tag directory
+  /home/yi-maru/Software/homer/bin/makeTagDirectory fibro_1_input_tagdir -tbp 1 pre_makeTagDirectory_H4K8ac_fibro_1_input.bed -format bed &
+
+
+# Find peak & normalization
+  /home/yi-maru/Software/homer/bin/findPeaks fibro_1_tagdir -style histone -o auto -gsize 3000000000 -i fibro_1_input_tagdir &
+
+# annotation & quantifying
+  /home/yi-maru/Software/homer/bin/annotatePeaks.pl fibro_1_tagdir/regions.txt hg19 -d fibro_1_tagdir > fibro_1_tagdir/peak_annotation_result.txt &
+
+
+
+
+
+

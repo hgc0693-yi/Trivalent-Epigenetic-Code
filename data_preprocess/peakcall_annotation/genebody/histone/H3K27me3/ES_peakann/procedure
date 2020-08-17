@@ -1,0 +1,9 @@
+# Create tag directory
+  /home/yi-maru/Software/homer/bin/makeTagDirectory H1_1_tagdir -tbp 1 /home/yi-maru/histone/H3K27me3/ES/H1/H1_1/sample/SRR067943_uniq_mapped.sam -format sam
+
+# Find peak & normalization
+  /home/yi-maru/Software/homer/bin/findPeaks /home/yi-maru/histone/research/peakcall_annotation/genebody/H3K27me3/ES_peakann/H1/H1_1_tagdir -style histone -o auto -gsize 3000000000 -i /home/yi-maru/histone/research/peakcall_annotation/genebody/H3K27me3/ES_peakann/H1/H1_1_input_tagdir
+
+# annotation & quantifying
+  /home/yi-maru/Software/homer/bin/annotatePeaks.pl /home/yi-maru/histone/research/peakcall_annotation/genebody/H3K27me3/ES_peakann/H1/H1_1_tagdir/regions.txt hg19 -d /home/yi-maru/histone/research/peakcall_annotation/genebody/H3K27me3/ES_peakann/H1/H1_1_tagdir > /home/yi-maru/histone/research/peakcall_annotation/genebody/H3K27me3/ES_peakann/H1/H1_1_tagdir/peak_annotation_result_genebody.txt
+

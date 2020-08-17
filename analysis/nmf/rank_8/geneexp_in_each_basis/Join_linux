@@ -1,0 +1,78 @@
+# sort gene_number
+    sort -k 1,1 /home/yi-maru/RNA-seq/ES/H1_2/homer_annotation/H1_2_tagdir/H1_2_RNA_tagcount_fpkm.txt | cat > out1.txt
+    sort -k 1,1 /home/yi-maru/integrated_research/nmf/intensity/genebody_plus_promoter/rank_8/genes_of_basis_1.txt | cat > out2.txt
+    sort -k 1,1 /home/yi-maru/integrated_research/nmf/intensity/genebody_plus_promoter/rank_8/genes_of_basis_2.txt | cat > out3.txt
+    sort -k 1,1 /home/yi-maru/integrated_research/nmf/intensity/genebody_plus_promoter/rank_8/genes_of_basis_3.txt | cat > out4.txt
+    sort -k 1,1 /home/yi-maru/integrated_research/nmf/intensity/genebody_plus_promoter/rank_8/genes_of_basis_4.txt | cat > out5.txt
+    sort -k 1,1 /home/yi-maru/integrated_research/nmf/intensity/genebody_plus_promoter/rank_8/genes_of_basis_5.txt | cat > out6.txt
+    sort -k 1,1 /home/yi-maru/integrated_research/nmf/intensity/genebody_plus_promoter/rank_8/genes_of_basis_6.txt | cat > out7.txt
+    sort -k 1,1 /home/yi-maru/integrated_research/nmf/intensity/genebody_plus_promoter/rank_8/genes_of_basis_7.txt | cat > out8.txt
+    sort -k 1,1 /home/yi-maru/integrated_research/nmf/intensity/genebody_plus_promoter/rank_8/genes_of_basis_8.txt | cat > out9.txt
+
+###  basis_1  ###
+  join -a 2 -1 1 -2 1 -o 0 1.2 -e "0" out1.txt out2.txt > tmp.count.txt
+
+  echo "Gene_name geneexp" > whole_geneexp_of_basis_1.txt
+
+  cat tmp.count.txt >> whole_geneexp_of_basis_1.txt
+
+###  basis_2  ###
+  join -a 2 -1 1 -2 1 -o 0 1.2 -e "0" out1.txt out3.txt > tmp.count.txt
+
+  echo "Gene_name geneexp" > whole_geneexp_of_basis_2.txt
+
+  cat tmp.count.txt >> whole_geneexp_of_basis_2.txt
+
+###  basis_3  ###
+  join -a 2 -1 1 -2 1 -o 0 1.2 -e "0" out1.txt out4.txt > tmp.count.txt
+
+  echo "Gene_name geneexp" > whole_geneexp_of_basis_3.txt
+
+  cat tmp.count.txt >> whole_geneexp_of_basis_3.txt
+
+###  basis_4  ###
+  join -a 2 -1 1 -2 1 -o 0 1.2 -e "0" out1.txt out5.txt > tmp.count.txt
+
+  echo "Gene_name geneexp" > whole_geneexp_of_basis_4.txt
+
+  cat tmp.count.txt >> whole_geneexp_of_basis_4.txt
+
+###  basis_5  ###
+  join -a 2 -1 1 -2 1 -o 0 1.2 -e "0" out1.txt out6.txt > tmp.count.txt
+
+  echo "Gene_name geneexp" > whole_geneexp_of_basis_5.txt
+
+  cat tmp.count.txt >> whole_geneexp_of_basis_5.txt
+
+###  basis_6  ###
+  join -a 2 -1 1 -2 1 -o 0 1.2 -e "0" out1.txt out7.txt > tmp.count.txt
+
+  echo "Gene_name geneexp" > whole_geneexp_of_basis_6.txt
+
+  cat tmp.count.txt >> whole_geneexp_of_basis_6.txt
+
+###  basis_7  ###
+  join -a 2 -1 1 -2 1 -o 0 1.2 -e "0" out1.txt out8.txt > tmp.count.txt
+
+  echo "Gene_name geneexp" > whole_geneexp_of_basis_7.txt
+
+  cat tmp.count.txt >> whole_geneexp_of_basis_7.txt
+
+
+###  basis_8  ###
+  join -a 2 -1 1 -2 1 -o 0 1.2 -e "0" out1.txt out9.txt > tmp.count.txt
+
+  echo "Gene_name geneexp" > whole_geneexp_of_basis_8.txt
+
+  cat tmp.count.txt >> whole_geneexp_of_basis_8.txt
+
+
+ rm tmp* out*
+
+ 
+  
+
+
+
+
+

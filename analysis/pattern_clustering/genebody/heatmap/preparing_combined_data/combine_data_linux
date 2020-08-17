@@ -1,0 +1,46 @@
+  sort -k 1,1 /home/yi-maru/RNA-seq/somatic/fibroblast/HDF/homer_annotation/HDF_1_tagdir/HDF_1_RNA_tagcount_fpkm.txt | cat > out1.txt
+
+  sort -k 1,1 /home/yi-maru/RNA-seq/ES/H1_2/homer_annotation/H1_2_tagdir/H1_2_RNA_tagcount_fpkm.txt | cat > out2.txt
+
+  tail -n +2 /home/yi-maru/integrated_research/histone_modification_5hmC_geneexp_correlation/whole_genes/figures/correlation_matrix/divide_into_genomic_feature/genebody/hmC_5mC_whole_active_plus_repressive_histone_H1.txt > nonhead_hmC_5mC_whole_active_plus_repressive_histone_H1.txt
+
+  sort -k 1,1 nonhead_hmC_5mC_whole_active_plus_repressive_histone_H1.txt | cat > out3.txt
+
+  sort -k 1,1 /home/yi-maru/hmC/research/peakcall_annotation/genebody/fibro_hg19_peakann/IMR90_tagdir/only_genebody/fibro_5hmC_tagcount_only_genebody.txt | cat > out4.txt
+
+  sort -k 1,1 /home/yi-maru/mC/research/peakcall_annotation/genebody/fibro_peakann/fibro_Donor_1_P3_tagdir/only_genebody/fibro_5mC_tagcount_only_genebody.txt | cat > out5.txt
+
+  sort -k 1,1 /home/yi-maru/histone/research/peakcall_annotation/genebody/H3K4me1/fibro_peakann/fibro_1_tagdir/only_genebody/H3K4me1_fibro_1_tagcount_only_genebody.txt | cat > out6.txt
+
+  sort -k 1,1 /home/yi-maru/histone/research/peakcall_annotation/genebody/H4K8ac/fibro_peakann/fibro_1/only_genebody/H4K8ac_fibro_1_tagcount_only_genebody.txt | cat > out7.txt
+
+
+
+#####
+
+  join -a 1 -a 2 -1 1 -2 1 -o 0 1.2 2.2 -e 0 out1.txt out2.txt > tmp1.count.txt
+  join -a 1 -a 2 -1 1 -2 1 -o 0 1.2 1.3 2.2 2.3 2.8 2.13 -e 0 tmp1.count.txt out3.txt > tmp2.count.txt
+  join -a 1 -a 2 -1 1 -2 1 -o 0 1.2 1.3 1.4 1.5 1.6 1.7 2.2 -e 0 tmp2.count.txt out4.txt > tmp3.count.txt
+  join -a 1 -a 2 -1 1 -2 1 -o 0 1.2 1.3 1.4 1.5 1.6 1.7 1.8 2.2 -e 0 tmp3.count.txt out5.txt > tmp4.count.txt
+  join -a 1 -a 2 -1 1 -2 1 -o 0 1.2 1.3 1.4 1.5 1.6 1.7 1.8 1.9 2.2 -e 0 tmp4.count.txt out6.txt > tmp5.count.txt
+  join -a 1 -a 2 -1 1 -2 1 -o 0 1.2 1.3 1.4 1.5 1.6 1.7 1.8 1.9 1.10 2.2 -e 0 tmp5.count.txt out7.txt > tmp.count.txt
+
+#####
+
+  echo "Gene_name HDF_1_RNA H1_2_RNA H1_5hmC H1_5mC H1_H3K4me1 H1_H4K8ac IMR90_5hmC IMR90_5mC IMR90_H3K4me1 IMR90_H4K8ac" > combined_whole_factors.txt
+  cat tmp.count.txt >> combined_whole_factors.txt
+
+  rm tmp* out* *nonhead*
+
+
+
+
+  
+
+
+  
+
+
+
+
+

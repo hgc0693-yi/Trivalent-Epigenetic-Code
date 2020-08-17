@@ -1,0 +1,57 @@
+# sort gene_number
+
+    sort -k 1,1 /home/yi-maru/hmC/research/peakcall_annotation/genebody/H1_peakann/H1_tagdir/only_genebody/H1_5hmC_tagcount_only_genebody.txt | cat > out1.txt
+    sort -k 1,1 /home/yi-maru/mC/research/peakcall_annotation/genebody/ES_peakann/H1_C2_tagdir/only_genebody/H1_5mC_tagcount_only_genebody.txt | cat > out2.txt
+
+### active histone
+    sort -k 1,1 /home/yi-maru/histone/research/peakcall_annotation/genebody/H2AK5ac/ES_peakann/ES_1_H1_tagdir/only_genebody/H1_H2AK5ac_tagcount_only_genebody.txt | cat > out3.txt
+    sort -k 1,1 /home/yi-maru/histone/research/peakcall_annotation/genebody/H2BK5ac/ES_peakann/ES_1_H1_tagdir/only_genebody/H1_H2BK5ac_tagcount_only_genebody.txt | cat > out4.txt
+    sort -k 1,1 /home/yi-maru/histone/research/peakcall_annotation/genebody/H2BK12ac/ES_peakann/ES_1_H1_tagdir/only_genebody/H1_H2BK12ac_tagcount_only_genebody.txt | cat > out5.txt | cat > out5.txt
+    sort -k 1,1 /home/yi-maru/histone/research/peakcall_annotation/genebody/H2BK15ac/ES_peakann/ES_1_H1_tagdir/only_genebody/H1_H2BK15ac_tagcount_only_genebody.txt | cat > out6.txt | cat > out6.txt
+    sort -k 1,1 /home/yi-maru/histone/research/peakcall_annotation/genebody/H3K4me1/ES_peakann/ES_H1_tagdir/only_genebody/H1_H3K4me1_tagcount_only_genebody.txt | cat > out7.txt | cat > out7.txt
+    sort -k 1,1 /home/yi-maru/histone/research/peakcall_annotation/genebody/H3K4me2/ES_peakann/ES_1_H1_tagdir/only_genebody/H1_H3K4me2_tagcount_only_genebody.txt | cat > out8.txt | cat > out8.txt
+    sort -k 1,1 /home/yi-maru/histone/research/peakcall_annotation/genebody/H3K4me3/ES_peakann/ES_1_H1_tagdir/only_genebody/H1_H3K4me3_tagcount_only_genebody.txt | cat > out9.txt | cat > out9.txt
+    sort -k 1,1 /home/yi-maru/histone/research/peakcall_annotation/genebody/H3K4ac/ES_peakann/ES_2_H1_tagdir/only_genebody/H1_H3K4ac_tagcount_only_genebody.txt | cat > out10.txt | cat > out10.txt
+    sort -k 1,1 /home/yi-maru/histone/research/peakcall_annotation/genebody/H3K9ac/ES_peakann/ES_1_H1_tagdir/only_genebody/H1_H3K9ac_tagcount_only_genebody.txt | cat > out11.txt | cat > out11.txt
+    sort -k 1,1 /home/yi-maru/histone/research/peakcall_annotation/genebody/H4K8ac/ES_peakann/ES_1_H1/ES_1_H1_tagdir/only_genebody/H1_H4K8ac_tagcount_only_genebody.txt | cat > out12.txt | cat > out12.txt
+    sort -k 1,1 /home/yi-maru/histone/research/peakcall_annotation/genebody/H3K14ac/ES_peakann/ES_2_H1_tagdir/only_genebody/H1_H3K14ac_tagcount_only_genebody.txt | cat > out13.txt | cat > out13.txt
+    sort -k 1,1 /home/yi-maru/histone/research/peakcall_annotation/genebody/H3K18ac/ES_peakann/ES_1_H1_tagdir/only_genebody/H1_H3K18ac_tagcount_only_genebody.txt | cat > out14.txt | cat > out14.txt
+    sort -k 1,1 /home/yi-maru/histone/research/peakcall_annotation/genebody/H3K23ac/ES_peakann/ES_2_H1_tagdir/only_genebody/H1_H3K23ac_tagcount_only_genebody.txt | cat > out15.txt | cat > out15.txt
+    sort -k 1,1 /home/yi-maru/histone/research/peakcall_annotation/genebody/H3K27ac/ES_peakann/ES_H1_tagdir/only_genebody/H1_H3K27ac_tagcount_only_genebody.txt | cat > out16.txt | cat > out16.txt
+
+### repressive histone
+    sort -k 1,1 /home/yi-maru/histone/research/peakcall_annotation/genebody/H3K9me3/ES_peakann/ES_1_H1_tagdir/only_genebody/H1_H3K9me3_tagcount_only_genebody.txt | cat > out17.txt | cat > out17.txt
+    sort -k 1,1 /home/yi-maru/histone/research/peakcall_annotation/genebody/H3K27me3/ES_peakann/H1/H1_1_tagdir/only_genebody/H1_H3K27me3_tagcount_only_genebody.txt | cat > out18.txt | cat > out18.txt
+    sort -k 1,1 /home/yi-maru/histone/research/peakcall_annotation/genebody/H4K20me1/ES_peakann/ES_1_H1_tagdir/only_genebody/H1_H4K20me1_tagcount_only_genebody.txt | cat > out19.txt | cat > out19.txt
+
+
+# join Readcount_data   (Ref html: http://qiita.com/isseium/items/20eb6802898d9b1ba2b4)
+  join -a 1 -a 2 -1 1 -2 1 -o 0 1.2 2.2 -e "0" out1.txt out2.txt > tmp1.count.txt
+  join -a 1 -a 2 -1 1 -2 1 -o 0 1.2 1.3 2.2 -e "0" tmp1.count.txt out3.txt > tmp2.count.txt
+  join -a 1 -a 2 -1 1 -2 1 -o 0 1.2 1.3 1.4 2.2 -e "0" tmp2.count.txt out4.txt > tmp3.count.txt
+  join -a 1 -a 2 -1 1 -2 1 -o 0 1.2 1.3 1.4 1.5 2.2 -e "0" tmp3.count.txt out5.txt > tmp4.count.txt
+  join -a 1 -a 2 -1 1 -2 1 -o 0 1.2 1.3 1.4 1.5 1.6 2.2 -e "0" tmp4.count.txt out6.txt > tmp5.count.txt
+  join -a 1 -a 2 -1 1 -2 1 -o 0 1.2 1.3 1.4 1.5 1.6 1.7 2.2 -e "0" tmp5.count.txt out7.txt > tmp6.count.txt
+  join -a 1 -a 2 -1 1 -2 1 -o 0 1.2 1.3 1.4 1.5 1.6 1.7 1.8 2.2 -e "0" tmp6.count.txt out8.txt > tmp7.count.txt
+  join -a 1 -a 2 -1 1 -2 1 -o 0 1.2 1.3 1.4 1.5 1.6 1.7 1.8 1.9 2.2 -e "0" tmp7.count.txt out9.txt > tmp8.count.txt
+  join -a 1 -a 2 -1 1 -2 1 -o 0 1.2 1.3 1.4 1.5 1.6 1.7 1.8 1.9 1.10 2.2 -e "0" tmp8.count.txt out10.txt > tmp9.count.txt
+  join -a 1 -a 2 -1 1 -2 1 -o 0 1.2 1.3 1.4 1.5 1.6 1.7 1.8 1.9 1.10 1.11 2.2 -e "0" tmp9.count.txt out11.txt > tmp10.count.txt
+  join -a 1 -a 2 -1 1 -2 1 -o 0 1.2 1.3 1.4 1.5 1.6 1.7 1.8 1.9 1.10 1.11 1.12 2.2 -e "0" tmp10.count.txt out12.txt > tmp11.count.txt
+  join -a 1 -a 2 -1 1 -2 1 -o 0 1.2 1.3 1.4 1.5 1.6 1.7 1.8 1.9 1.10 1.11 1.12 1.13 2.2 -e "0" tmp11.count.txt out13.txt > tmp12.count.txt
+  join -a 1 -a 2 -1 1 -2 1 -o 0 1.2 1.3 1.4 1.5 1.6 1.7 1.8 1.9 1.10 1.11 1.12 1.13 1.14 2.2 -e "0" tmp12.count.txt out14.txt > tmp13.count.txt
+  join -a 1 -a 2 -1 1 -2 1 -o 0 1.2 1.3 1.4 1.5 1.6 1.7 1.8 1.9 1.10 1.11 1.12 1.13 1.14 1.15 2.2 -e "0" tmp13.count.txt out15.txt > tmp14.count.txt
+  join -a 1 -a 2 -1 1 -2 1 -o 0 1.2 1.3 1.4 1.5 1.6 1.7 1.8 1.9 1.10 1.11 1.12 1.13 1.14 1.15 1.16 2.2 -e "0" tmp14.count.txt out16.txt > tmp15.count.txt
+  join -a 1 -a 2 -1 1 -2 1 -o 0 1.2 1.3 1.4 1.5 1.6 1.7 1.8 1.9 1.10 1.11 1.12 1.13 1.14 1.15 1.16 1.17 2.2 -e "0" tmp15.count.txt out17.txt > tmp16.count.txt
+  join -a 1 -a 2 -1 1 -2 1 -o 0 1.2 1.3 1.4 1.5 1.6 1.7 1.8 1.9 1.10 1.11 1.12 1.13 1.14 1.15 1.16 1.17 1.18 2.2 -e "0" tmp16.count.txt out18.txt > tmp17.count.txt
+  join -a 1 -a 2 -1 1 -2 1 -o 0 1.2 1.3 1.4 1.5 1.6 1.7 1.8 1.9 1.10 1.11 1.12 1.13 1.14 1.15 1.16 1.17 1.18 1.19 2.2 -e "0" tmp17.count.txt out19.txt > tmp.count.txt
+
+  echo "Gene_name H1_5hmC H1_5mC H1_H2AK5ac H1_H2BK5ac H1_H2BK12ac H1_H2BK15ac H1_H3K4me1 H1_H3K4me2 H1_H3K4me3 H1_H3K4ac H1_H3K9ac H1_H4K8ac H1_H3K14ac H1_H3K18ac H1_H3K23ac H1_H3K27ac H1_H3K9me3 H1_H3K27me3 H1_H4K20me1" > hmC_5mC_whole_active_plus_repressive_histone_H1.txt
+  cat tmp.count.txt >> hmC_5mC_whole_active_plus_repressive_histone_H1.txt
+  rm tmp* out*
+ 
+  
+
+
+
+
+

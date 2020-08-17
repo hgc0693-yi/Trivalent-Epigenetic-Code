@@ -1,0 +1,31 @@
+# Quality check
+ /usr/local/package/fastqc/0.11.7/fastqc -f fastq /home/yi-maru/histone/mouse/ES/input/DRR022259.fastq
+
+
+# Mapping
+   /usr/local/package/bowtie/2.3.4.3/bowtie2 -x /home/yi-maru/mystudy/doctor/Reference/Mus_musculus/UCSC/mm9/Sequence/Bowtie2Index/genome -U /home/yi-maru/histone/mouse/ES/input/DRR022259.fastq -N 0 -S DRR022259_mapped.sam
+
+
+
+# remove multiple-mapped read
+  grep -v "XS" /home/yi-maru/histone/mouse/ES/input/DRR022259_mapped.sam > /home/yi-maru/histone/mouse/ES/input/DRR022259_uniq_mapped.sam
+
+
+
+# sam to bam
+  samtools view -bS DRR022259_uniq_mapped.sam > DRR022259_uniq_mapped.bam
+
+# sort bam_file
+#  samtools sort SRR453526_uniq_mapped.bam SRR453526_uniq_mapped_sorted
+
+# bam index
+#  samtools index SRR453526_uniq_mapped_sorted.bam
+
+
+
+  
+
+
+
+
+

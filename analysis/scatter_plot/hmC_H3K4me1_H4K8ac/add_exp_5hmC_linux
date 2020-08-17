@@ -1,0 +1,35 @@
+# sort gene_number
+
+  tail -n +2 /home/yi-maru/RNA-seq/research/DEG_and_epigenomefactors_relation/only_genebody/5hmC_5mC_H3K4me1_H4K8ac/heatmap/preparing_combined_data/combined_whole_factors.txt > nonhead_combined_whole_factors.txt
+  sort -k 1,1 nonhead_combined_whole_factors.txt | cat > out1.txt
+  
+  sort -k 1,1 /home/yi-maru/revision_for_PlosOne/importance_of_trivalent_marks/relation_to_geneexp/hmC_plus_H3K4me1_minus_H4K8ac_minus.txt | cat > out2.txt
+  sort -k 1,1 /home/yi-maru/revision_for_PlosOne/importance_of_trivalent_marks/relation_to_geneexp/hmC_plus_H3K4me1_plus_H4K8ac_minus.txt | cat > out3.txt
+  sort -k 1,1 /home/yi-maru/revision_for_PlosOne/importance_of_trivalent_marks/relation_to_geneexp/hmC_plus_H3K4me1_plus_H4K8ac_plus.txt | cat > out4.txt
+
+
+# join Readcount_data   (Ref html: http://qiita.com/isseium/items/20eb6802898d9b1ba2b4)
+
+  join -a 2 -1 1 -2 1 -o 0 1.2 1.3 1.8 1.4 -e 0 out1.txt out2.txt > tmp.count.txt
+  echo "Gene_name HDF_1_RNA H1_2_RNA IMR90_5hmC H1_5hmC" > hmC_plus_H3K4me1_minus_H4K8ac_minus_add_exp_5hmC.txt 
+  cat tmp.count.txt >> hmC_plus_H3K4me1_minus_H4K8ac_minus_add_exp_5hmC.txt
+ 
+
+  join -a 2 -1 1 -2 1 -o 0 1.2 1.3 1.8 1.4 -e 0 out1.txt out3.txt > tmp.count.txt
+  echo "Gene_name HDF_1_RNA H1_2_RNA IMR90_5hmC H1_5hmC" > hmC_plus_H3K4me1_plus_H4K8ac_minus_add_exp_5hmC.txt
+  cat tmp.count.txt >> hmC_plus_H3K4me1_plus_H4K8ac_minus_add_exp_5hmC.txt
+ 
+
+  join -a 2 -1 1 -2 1 -o 0 1.2 1.3 1.8 1.4 -e 0 out1.txt out4.txt > tmp.count.txt
+  echo "Gene_name HDF_1_RNA H1_2_RNA IMR90_5hmC H1_5hmC" > hmC_plus_H3K4me1_plus_H4K8ac_plus_add_exp_5hmC.txt 
+  cat tmp.count.txt >> hmC_plus_H3K4me1_plus_H4K8ac_plus_add_exp_5hmC.txt
+ 
+
+  rm tmp* out*
+ 
+  
+
+
+
+
+

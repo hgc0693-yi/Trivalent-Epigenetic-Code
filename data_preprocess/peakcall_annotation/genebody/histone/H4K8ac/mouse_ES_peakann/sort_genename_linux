@@ -1,0 +1,10 @@
+# remove header_row
+
+  tail -n +2 peak_annotation_result_genebody.txt > nonhead_peak_annotation_result_genebody.txt
+
+# sort gene_name
+
+  sort -k 16,16 -t $'\t'  nonhead_peak_annotation_result_genebody.txt | cat > peak_annotation_result_genebody_sorted.txt
+
+  rm nonhead_peak_annotation_result_genebody.txt
+

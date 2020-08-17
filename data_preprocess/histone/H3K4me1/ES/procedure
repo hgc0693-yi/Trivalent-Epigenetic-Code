@@ -1,0 +1,50 @@
+# sra-file -> fastq-file(paired-end)
+  /home/yi-maru/Software/sratoolkit.2.8.1-ubuntu64/bin/fastq-dump.2 /home/yi-maru/histone/H3K4me1/ES/ES_1_H1/SRR018456.sra
+
+
+# Quality check
+   /usr/local/package/fastqc/FastQC.0.11.2/fastqc -f fastq /home/yi-maru/histone/H3K4me1/ES/ES_1_H1/SRR018456.fastq
+
+
+
+# Quality control
+/home/yi-maru/Software/prinseq-lite-0.20.4/prinseq-lite.pl -min_qual_mean 20 -fastq /home/yi-maru/histone/H3K4me1/ES/ES_1_H1/SRR018456_remove_adapter.fastq -out_format 3 -out_good /home/yi-maru/histone/H3K4me1/ES/ES_1_H1/SRR018456_minqualmean  
+
+/home/yi-maru/Software/prinseq-lite-0.20.4/prinseq-lite.pl -trim_right 3 -fastq /home/yi-maru/histone/H3K4me1/ES/ES_1_H1/SRR018456_minqualmean.fastq -out_format 3 -out_good /home/yi-maru/histone/H3K4me1/ES/ES_1_H1/SRR018456_trimright 
+
+/home/yi-maru/Software/tagcleaner-standalone-0.16/tagcleaner.pl -64 -fastq /home/yi-maru/histone/H3K4me1/ES/ES_1_H1/SRR018456.fastq -out /home/yi-maru/histone/H3K4me1/ES/ES_1_H1/SRR018456_remove_adapter -tag5 GATCGGAAGAGCTCGTATGCCGTCTTCTGCTTG -minlen 10 ;
+
+/home/yi-maru/Software/prinseq-lite-0.20.4/prinseq-lite.pl -min_len 25 -fastq /home/yi-maru/histone/H3K4me1/ES/ES_1_H1/SRR018456_trimright.fastq -out_format 3 -out_good /home/yi-maru/histone/H3K4me1/ES/ES_1_H1/SRR018456_after_qualcont
+
+
+
+# Quality check(second)
+   /usr/local/package/fastqc/FastQC.0.11.2/fastqc -f fastq /home/yi-maru/histone/H3K4me1/ES/ES_1_H1/SRR018456_after_qualcont.fastq
+
+# Mapping
+   /usr/local/package/bowtie2/2.2.2/bowtie2 -x /home/yi-maru/mystudy/doctor/Reference/hg19/Homo_sapiens/UCSC/hg19/Sequence/Bowtie2Index/genome -U /home/yi-maru/mystudy/doctor/histone/H3K4me1/ES/ES_1/SRR020519_after_qualcont.fastq -N 0 -S SRR020519_mapped.sam
+
+
+
+# remove multiple-mapped read
+  grep -v "XS" /home/yi-maru/mystudy/doctor/histone/H3K4me1/ES/ES_1/SRR020519_mapped.sam > /home/yi-maru/mystudy/doctor/histone/H3K4me1/ES/ES_1/SRR020519_uniq_mapped.sam
+
+
+
+# sam to bam
+  samtools view -bS SRR020519_uniq_mapped.sam > SRR020519_uniq_mapped.bam
+
+# sort bam_file
+  samtools sort SRR453526_uniq_mapped.bam SRR453526_uniq_mapped_sorted
+
+# bam index
+  samtools index SRR453526_uniq_mapped_sorted.bam
+
+
+
+  
+
+
+
+
+

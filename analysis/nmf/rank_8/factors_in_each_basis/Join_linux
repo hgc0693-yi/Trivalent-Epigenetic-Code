@@ -1,0 +1,85 @@
+# sort gene_number
+    sort -k 1,1 /home/yi-maru/integrated_research/nmf/intensity/genebody_plus_promoter/genebody_promoter.txt | cat > out1.txt
+    sort -k 1,1 /home/yi-maru/integrated_research/nmf/intensity/genebody_plus_promoter/rank_8/genes_of_basis_1.txt | cat > out2.txt
+    sort -k 1,1 /home/yi-maru/integrated_research/nmf/intensity/genebody_plus_promoter/rank_8/genes_of_basis_2.txt | cat > out3.txt
+    sort -k 1,1 /home/yi-maru/integrated_research/nmf/intensity/genebody_plus_promoter/rank_8/genes_of_basis_3.txt | cat > out4.txt
+    sort -k 1,1 /home/yi-maru/integrated_research/nmf/intensity/genebody_plus_promoter/rank_8/genes_of_basis_4.txt | cat > out5.txt
+    sort -k 1,1 /home/yi-maru/integrated_research/nmf/intensity/genebody_plus_promoter/rank_8/genes_of_basis_5.txt | cat > out6.txt
+    sort -k 1,1 /home/yi-maru/integrated_research/nmf/intensity/genebody_plus_promoter/rank_8/genes_of_basis_6.txt | cat > out7.txt
+    sort -k 1,1 /home/yi-maru/integrated_research/nmf/intensity/genebody_plus_promoter/rank_8/genes_of_basis_7.txt | cat > out8.txt
+    sort -k 1,1 /home/yi-maru/integrated_research/nmf/intensity/genebody_plus_promoter/rank_8/genes_of_basis_8.txt | cat > out9.txt
+
+
+  ###  basis_rank1  ###
+  join -a 2 -1 1 -2 1 -o 0 1.2 1.3 1.4 1.5 1.6 1.7 1.8 1.9 1.10 1.11 1.12 1.13 1.14 1.15 1.16 1.17 1.18 1.19 1.20 1.21 1.22 1.23 1.24 1.25 1.26 1.27 1.28 1.29 1.30 1.31 1.32 1.33 1.34 1.35 1.36 1.37 1.38 1.39 -e "0" out1.txt out2.txt > tmp.count.txt
+
+  echo "Gene_name genebody_H1_5hmC genebody_H1_5mC genebody_H1_H2AK5ac genebody_H1_H2BK5ac genebody_H1_H2BK12ac genebody_H1_H2BK15ac genebody_H1_H3K4me1 genebody_H1_H3K4me2 genebody_H1_H3K4me3 genebody_H1_H3K4ac genebody_H1_H3K9ac genebody_H1_H4K8ac genebody_H1_H3K14ac genebody_H1_H3K18ac genebody_H1_H3K23ac genebody_H1_H3K27ac genebody_H1_H3K9me3 genebody_H1_H3K27me3 genebody_H1_H4K20me1 promoter_H1_5hmC promoter_H1_5mC promoter_H1_H2AK5ac promoter_H1_H2BK5ac promoter_H1_H2BK12ac promoter_H1_H2BK15ac promoter_H1_H3K4me1 promoter_H1_H3K4me2 promoter_H1_H3K4me3 promoter_H1_H3K4ac promoter_H1_H3K9ac promoter_H1_H4K8ac promoter_H1_H3K14ac promoter_H1_H3K18ac promoter_H1_H3K23ac promoter_H1_H3K27ac promoter_H1_H3K9me3 promoter_H1_H3K27me3 promoter_H1_H4K20me1" > whole_factors_of_basis_1.txt
+
+  cat tmp.count.txt >> whole_factors_of_basis_1.txt
+
+
+  ###  basis_rank2  ###
+  join -a 2 -1 1 -2 1 -o 0 1.2 1.3 1.4 1.5 1.6 1.7 1.8 1.9 1.10 1.11 1.12 1.13 1.14 1.15 1.16 1.17 1.18 1.19 1.20 1.21 1.22 1.23 1.24 1.25 1.26 1.27 1.28 1.29 1.30 1.31 1.32 1.33 1.34 1.35 1.36 1.37 1.38 1.39 -e "0" out1.txt out3.txt > tmp.count.txt
+
+  echo "Gene_name genebody_H1_5hmC genebody_H1_5mC genebody_H1_H2AK5ac genebody_H1_H2BK5ac genebody_H1_H2BK12ac genebody_H1_H2BK15ac genebody_H1_H3K4me1 genebody_H1_H3K4me2 genebody_H1_H3K4me3 genebody_H1_H3K4ac genebody_H1_H3K9ac genebody_H1_H4K8ac genebody_H1_H3K14ac genebody_H1_H3K18ac genebody_H1_H3K23ac genebody_H1_H3K27ac genebody_H1_H3K9me3 genebody_H1_H3K27me3 genebody_H1_H4K20me1 promoter_H1_5hmC promoter_H1_5mC promoter_H1_H2AK5ac promoter_H1_H2BK5ac promoter_H1_H2BK12ac promoter_H1_H2BK15ac promoter_H1_H3K4me1 promoter_H1_H3K4me2 promoter_H1_H3K4me3 promoter_H1_H3K4ac promoter_H1_H3K9ac promoter_H1_H4K8ac promoter_H1_H3K14ac promoter_H1_H3K18ac promoter_H1_H3K23ac promoter_H1_H3K27ac promoter_H1_H3K9me3 promoter_H1_H3K27me3 promoter_H1_H4K20me1" > whole_factors_of_basis_2.txt
+
+  cat tmp.count.txt >> whole_factors_of_basis_2.txt
+
+
+  ###  basis_rank3  ###
+  join -a 2 -1 1 -2 1 -o 0 1.2 1.3 1.4 1.5 1.6 1.7 1.8 1.9 1.10 1.11 1.12 1.13 1.14 1.15 1.16 1.17 1.18 1.19 1.20 1.21 1.22 1.23 1.24 1.25 1.26 1.27 1.28 1.29 1.30 1.31 1.32 1.33 1.34 1.35 1.36 1.37 1.38 1.39 -e "0" out1.txt out4.txt > tmp.count.txt
+
+  echo "Gene_name genebody_H1_5hmC genebody_H1_5mC genebody_H1_H2AK5ac genebody_H1_H2BK5ac genebody_H1_H2BK12ac genebody_H1_H2BK15ac genebody_H1_H3K4me1 genebody_H1_H3K4me2 genebody_H1_H3K4me3 genebody_H1_H3K4ac genebody_H1_H3K9ac genebody_H1_H4K8ac genebody_H1_H3K14ac genebody_H1_H3K18ac genebody_H1_H3K23ac genebody_H1_H3K27ac genebody_H1_H3K9me3 genebody_H1_H3K27me3 genebody_H1_H4K20me1 promoter_H1_5hmC promoter_H1_5mC promoter_H1_H2AK5ac promoter_H1_H2BK5ac promoter_H1_H2BK12ac promoter_H1_H2BK15ac promoter_H1_H3K4me1 promoter_H1_H3K4me2 promoter_H1_H3K4me3 promoter_H1_H3K4ac promoter_H1_H3K9ac promoter_H1_H4K8ac promoter_H1_H3K14ac promoter_H1_H3K18ac promoter_H1_H3K23ac promoter_H1_H3K27ac promoter_H1_H3K9me3 promoter_H1_H3K27me3 promoter_H1_H4K20me1" > whole_factors_of_basis_3.txt
+
+  cat tmp.count.txt >> whole_factors_of_basis_3.txt
+
+
+  ###  basis_rank4  ###
+  join -a 2 -1 1 -2 1 -o 0 1.2 1.3 1.4 1.5 1.6 1.7 1.8 1.9 1.10 1.11 1.12 1.13 1.14 1.15 1.16 1.17 1.18 1.19 1.20 1.21 1.22 1.23 1.24 1.25 1.26 1.27 1.28 1.29 1.30 1.31 1.32 1.33 1.34 1.35 1.36 1.37 1.38 1.39 -e "0" out1.txt out5.txt > tmp.count.txt
+
+  echo "Gene_name genebody_H1_5hmC genebody_H1_5mC genebody_H1_H2AK5ac genebody_H1_H2BK5ac genebody_H1_H2BK12ac genebody_H1_H2BK15ac genebody_H1_H3K4me1 genebody_H1_H3K4me2 genebody_H1_H3K4me3 genebody_H1_H3K4ac genebody_H1_H3K9ac genebody_H1_H4K8ac genebody_H1_H3K14ac genebody_H1_H3K18ac genebody_H1_H3K23ac genebody_H1_H3K27ac genebody_H1_H3K9me3 genebody_H1_H3K27me3 genebody_H1_H4K20me1 promoter_H1_5hmC promoter_H1_5mC promoter_H1_H2AK5ac promoter_H1_H2BK5ac promoter_H1_H2BK12ac promoter_H1_H2BK15ac promoter_H1_H3K4me1 promoter_H1_H3K4me2 promoter_H1_H3K4me3 promoter_H1_H3K4ac promoter_H1_H3K9ac promoter_H1_H4K8ac promoter_H1_H3K14ac promoter_H1_H3K18ac promoter_H1_H3K23ac promoter_H1_H3K27ac promoter_H1_H3K9me3 promoter_H1_H3K27me3 promoter_H1_H4K20me1" > whole_factors_of_basis_4.txt
+
+  cat tmp.count.txt >> whole_factors_of_basis_4.txt
+
+
+  ###  basis_rank5  ###
+  join -a 2 -1 1 -2 1 -o 0 1.2 1.3 1.4 1.5 1.6 1.7 1.8 1.9 1.10 1.11 1.12 1.13 1.14 1.15 1.16 1.17 1.18 1.19 1.20 1.21 1.22 1.23 1.24 1.25 1.26 1.27 1.28 1.29 1.30 1.31 1.32 1.33 1.34 1.35 1.36 1.37 1.38 1.39 -e "0" out1.txt out6.txt > tmp.count.txt
+
+  echo "Gene_name genebody_H1_5hmC genebody_H1_5mC genebody_H1_H2AK5ac genebody_H1_H2BK5ac genebody_H1_H2BK12ac genebody_H1_H2BK15ac genebody_H1_H3K4me1 genebody_H1_H3K4me2 genebody_H1_H3K4me3 genebody_H1_H3K4ac genebody_H1_H3K9ac genebody_H1_H4K8ac genebody_H1_H3K14ac genebody_H1_H3K18ac genebody_H1_H3K23ac genebody_H1_H3K27ac genebody_H1_H3K9me3 genebody_H1_H3K27me3 genebody_H1_H4K20me1 promoter_H1_5hmC promoter_H1_5mC promoter_H1_H2AK5ac promoter_H1_H2BK5ac promoter_H1_H2BK12ac promoter_H1_H2BK15ac promoter_H1_H3K4me1 promoter_H1_H3K4me2 promoter_H1_H3K4me3 promoter_H1_H3K4ac promoter_H1_H3K9ac promoter_H1_H4K8ac promoter_H1_H3K14ac promoter_H1_H3K18ac promoter_H1_H3K23ac promoter_H1_H3K27ac promoter_H1_H3K9me3 promoter_H1_H3K27me3 promoter_H1_H4K20me1" > whole_factors_of_basis_5.txt
+
+  cat tmp.count.txt >> whole_factors_of_basis_5.txt
+
+
+  ###  basis_rank6  ###
+  join -a 2 -1 1 -2 1 -o 0 1.2 1.3 1.4 1.5 1.6 1.7 1.8 1.9 1.10 1.11 1.12 1.13 1.14 1.15 1.16 1.17 1.18 1.19 1.20 1.21 1.22 1.23 1.24 1.25 1.26 1.27 1.28 1.29 1.30 1.31 1.32 1.33 1.34 1.35 1.36 1.37 1.38 1.39 -e "0" out1.txt out7.txt > tmp.count.txt
+
+  echo "Gene_name genebody_H1_5hmC genebody_H1_5mC genebody_H1_H2AK5ac genebody_H1_H2BK5ac genebody_H1_H2BK12ac genebody_H1_H2BK15ac genebody_H1_H3K4me1 genebody_H1_H3K4me2 genebody_H1_H3K4me3 genebody_H1_H3K4ac genebody_H1_H3K9ac genebody_H1_H4K8ac genebody_H1_H3K14ac genebody_H1_H3K18ac genebody_H1_H3K23ac genebody_H1_H3K27ac genebody_H1_H3K9me3 genebody_H1_H3K27me3 genebody_H1_H4K20me1 promoter_H1_5hmC promoter_H1_5mC promoter_H1_H2AK5ac promoter_H1_H2BK5ac promoter_H1_H2BK12ac promoter_H1_H2BK15ac promoter_H1_H3K4me1 promoter_H1_H3K4me2 promoter_H1_H3K4me3 promoter_H1_H3K4ac promoter_H1_H3K9ac promoter_H1_H4K8ac promoter_H1_H3K14ac promoter_H1_H3K18ac promoter_H1_H3K23ac promoter_H1_H3K27ac promoter_H1_H3K9me3 promoter_H1_H3K27me3 promoter_H1_H4K20me1" > whole_factors_of_basis_6.txt
+
+  cat tmp.count.txt >> whole_factors_of_basis_6.txt
+
+
+  ###  basis_rank7  ###
+  join -a 2 -1 1 -2 1 -o 0 1.2 1.3 1.4 1.5 1.6 1.7 1.8 1.9 1.10 1.11 1.12 1.13 1.14 1.15 1.16 1.17 1.18 1.19 1.20 1.21 1.22 1.23 1.24 1.25 1.26 1.27 1.28 1.29 1.30 1.31 1.32 1.33 1.34 1.35 1.36 1.37 1.38 1.39 -e "0" out1.txt out8.txt > tmp.count.txt
+
+  echo "Gene_name genebody_H1_5hmC genebody_H1_5mC genebody_H1_H2AK5ac genebody_H1_H2BK5ac genebody_H1_H2BK12ac genebody_H1_H2BK15ac genebody_H1_H3K4me1 genebody_H1_H3K4me2 genebody_H1_H3K4me3 genebody_H1_H3K4ac genebody_H1_H3K9ac genebody_H1_H4K8ac genebody_H1_H3K14ac genebody_H1_H3K18ac genebody_H1_H3K23ac genebody_H1_H3K27ac genebody_H1_H3K9me3 genebody_H1_H3K27me3 genebody_H1_H4K20me1 promoter_H1_5hmC promoter_H1_5mC promoter_H1_H2AK5ac promoter_H1_H2BK5ac promoter_H1_H2BK12ac promoter_H1_H2BK15ac promoter_H1_H3K4me1 promoter_H1_H3K4me2 promoter_H1_H3K4me3 promoter_H1_H3K4ac promoter_H1_H3K9ac promoter_H1_H4K8ac promoter_H1_H3K14ac promoter_H1_H3K18ac promoter_H1_H3K23ac promoter_H1_H3K27ac promoter_H1_H3K9me3 promoter_H1_H3K27me3 promoter_H1_H4K20me1" > whole_factors_of_basis_7.txt
+
+  cat tmp.count.txt >> whole_factors_of_basis_7.txt
+
+
+  ###  basis_rank8  ###
+  join -a 2 -1 1 -2 1 -o 0 1.2 1.3 1.4 1.5 1.6 1.7 1.8 1.9 1.10 1.11 1.12 1.13 1.14 1.15 1.16 1.17 1.18 1.19 1.20 1.21 1.22 1.23 1.24 1.25 1.26 1.27 1.28 1.29 1.30 1.31 1.32 1.33 1.34 1.35 1.36 1.37 1.38 1.39 -e "0" out1.txt out9.txt > tmp.count.txt
+
+  echo "Gene_name genebody_H1_5hmC genebody_H1_5mC genebody_H1_H2AK5ac genebody_H1_H2BK5ac genebody_H1_H2BK12ac genebody_H1_H2BK15ac genebody_H1_H3K4me1 genebody_H1_H3K4me2 genebody_H1_H3K4me3 genebody_H1_H3K4ac genebody_H1_H3K9ac genebody_H1_H4K8ac genebody_H1_H3K14ac genebody_H1_H3K18ac genebody_H1_H3K23ac genebody_H1_H3K27ac genebody_H1_H3K9me3 genebody_H1_H3K27me3 genebody_H1_H4K20me1 promoter_H1_5hmC promoter_H1_5mC promoter_H1_H2AK5ac promoter_H1_H2BK5ac promoter_H1_H2BK12ac promoter_H1_H2BK15ac promoter_H1_H3K4me1 promoter_H1_H3K4me2 promoter_H1_H3K4me3 promoter_H1_H3K4ac promoter_H1_H3K9ac promoter_H1_H4K8ac promoter_H1_H3K14ac promoter_H1_H3K18ac promoter_H1_H3K23ac promoter_H1_H3K27ac promoter_H1_H3K9me3 promoter_H1_H3K27me3 promoter_H1_H4K20me1" > whole_factors_of_basis_8.txt
+
+  cat tmp.count.txt >> whole_factors_of_basis_8.txt
+
+
+ rm tmp* out*
+
+ 
+  
+
+
+
+
+

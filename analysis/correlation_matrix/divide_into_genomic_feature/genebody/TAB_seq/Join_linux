@@ -1,0 +1,25 @@
+# sort gene_number
+
+  sort -k 1,1 /home/yi-maru/hmC/research/peakcall_annotation/genebody/H1_peakann/H1_tagdir/only_genebody/H1_5hmC_tagcount_only_genebody.txt | cat > out1.txt
+  sort -k 1,1 /home/yi-maru/hmC/research/peakcall_annotation/genebody/TAB_seq/only_genebody/number_of_5hmC_per_gene.txt | cat > out2.txt
+  sort -k 1,1 /home/yi-maru/histone/research/peakcall_annotation/genebody/H3K4me1/ES_peakann/H1/ES_H1_tagdir/only_genebody/H1_H3K4me1_tagcount_only_genebody.txt | cat > out3.txt
+  sort -k 1,1 /home/yi-maru/histone/research/peakcall_annotation/genebody/H4K8ac/ES_peakann/ES_1_H1/ES_1_H1_tagdir/only_genebody/H1_H4K8ac_tagcount_only_genebody.txt | cat > out4.txt  
+
+
+# join Readcount_data   (Ref html: http://qiita.com/isseium/items/20eb6802898d9b1ba2b4)
+
+  join -a 1 -a 2 -1 1 -2 1 -o 0 1.2 2.2 -e "0" out1.txt out2.txt > tmp1.count.txt
+  join -a 1 -a 2 -1 1 -2 1 -o 0 1.2 1.3 2.2 -e "0" tmp1.count.txt out3.txt > tmp2.count.txt
+  join -a 1 -a 2 -1 1 -2 1 -o 0 1.2 1.3 1.4 2.2 -e "0" tmp2.count.txt out4.txt > tmp.count.txt
+
+
+  echo "Gene_name 5hmC_MeDIP 5hmC_TAB_SEq H3K4me1 H4K8ac" > hmC_MeDIP_TAB_Seq_H3K4me1_H4K8ac.txt
+  cat tmp.count.txt >> hmC_MeDIP_TAB_Seq_H3K4me1_H4K8ac.txt
+  rm tmp* out*
+ 
+  
+
+
+
+
+

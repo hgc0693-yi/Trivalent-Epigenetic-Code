@@ -1,0 +1,31 @@
+# Quality check
+ /usr/local/package/fastqc/0.11.8/fastqc -f fastq SRR524832.fastq
+ 
+
+# Mapping
+   /usr/local/package/bowtie/2.3.4.3/bowtie2 -x /home/yi-maru/mystudy/doctor/Reference/Mus_musculus/UCSC/mm9/Sequence/Bowtie2Index/genome -U /home/yi-maru/histone/mouse/H3K4me1/ES/input/SRR524832.fastq -N 0 -S SRR524832_mapped.sam
+
+
+
+# remove multiple-mapped read
+  grep -v "XS" /home/yi-maru/histone/mouse/H3K4me1/ES/input/SRR524832_mapped.sam > /home/yi-maru/histone/mouse/H3K4me1/ES/input/SRR524832_uniq_mapped.sam
+
+
+
+# sam to bam
+  samtools view -bS SRR524832_uniq_mapped.sam > SRR524832_uniq_mapped.bam
+
+# sort bam_file
+#  samtools sort SRR453526_uniq_mapped.bam SRR453526_uniq_mapped_sorted
+
+# bam index
+#  samtools index SRR453526_uniq_mapped_sorted.bam
+
+
+
+  
+
+
+
+
+

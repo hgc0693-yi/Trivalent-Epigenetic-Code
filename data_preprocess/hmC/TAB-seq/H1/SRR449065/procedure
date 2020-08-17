@@ -1,0 +1,40 @@
+# sra-file -> fastq-file
+#  /home/yi-maru/Software/sratoolkit.2.5.2-ubuntu64/bin/fastq-dump.2 /home/yi-maru/mystudy/mC/SRR926790.sra &
+
+# Quality check(before)
+   /usr/local/package/fastqc/FastQC.0.11.2/fastqc -f fastq SRR449065.fastq &
+
+
+### Quality control
+# Remove when mean of reads' quality is less than 20 
+   /home/yi-maru/Software/prinseq-lite-0.20.4/prinseq-lite.pl -min_qual_mean 20 -fastq /home/yi-maru/mystudy/hmC/TAB-seq/H1/H1_SRR449065/SRR449065.fastq -out_format 3 -out_good /home/yi-maru/mystudy/hmC/TAB-seq/H1/H1_SRR449065/SRR449065_minqualmean ;  
+
+# Remove terminal which has the quality less than 20 
+   /home/yi-maru/Software/prinseq-lite-0.20.4/prinseq-lite.pl -trim_qual_right 20 -fastq /home/yi-maru/mystudy/hmC/TAB-seq/H1/H1_SRR449065/SRR449065_minqualmean.fastq -out_format 3 -out_good /home/yi-maru/mystudy/hmC/TAB-seq/H1/H1_SRR449065/SRR449065_trimqualright ; 
+
+# Remove when the read length is less than 30 
+   /home/yi-maru/Software/prinseq-lite-0.20.4/prinseq-lite.pl -min_len 30 -fastq /home/yi-maru/mystudy/hmC/TAB-seq/H1/H1_SRR449065/SRR449065_trimqualright.fastq -out_format 3 -out_good /home/yi-maru/mystudy/hmC/TAB-seq/H1/H1_SRR449065/SRR449065_after_qualcont
+
+
+# Quality check(after)
+   /usr/local/package/fastqc/FastQC.0.11.2/fastqc -f fastq SRR449065_after_qualcont.fastq &
+
+
+
+# make bisulfite_converted_genome
+   /home/yi-maru/Software/bismark_v0.14.3/bismark_genome_preparation --verbose /home/yi-maru/mystudy/doctor/hmC/TAB-seq/Reference_hg19_Bisulfite --bowtie2 --path_to_bowtie /home/yi-maru/Software/bowtie2-2.2.5 &
+ 
+
+# Mapping
+#  /home/yi-maru/Software/bismark_v0.14.3/bismark -q -L 30 --bowtie2 --path_to_bowtie /home/yi-maru/Software/bowtie2-2.2.5 /home/yi-maru/mystudy/doctor/hmC/TAB-seq/Reference_hg19_Bisulfite /home/yi-maru/mystudy/doctor/hmC/TAB-seq/H1/SRR449065_after_qualcont.fastq
+
+   /home/yi-maru/Software/bismark_v0.14.3/bismark -q --bowtie2 --path_to_bowtie /home/yi-maru/Software/bowtie2-2.2.5 /home/yi-maru/mystudy/doctor/hmC/TAB-seq/Reference_hg19_Bisulfite /home/yi-maru/mystudy/doctor/hmC/TAB-seq/H1/H1_SRR449065/SRR449065_after_qualcont.fastq
+
+
+# deduplicate
+   /home/yi-maru/Software/bismark_v0.14.3/deduplicate_bismark -s /home/yi-maru/mystudy/doctor/hmC/TAB-seq/H1/H1_SRR449065/SRR449065_after_qualcont.fastq_bismark_bt2.bam
+
+# methylation extract
+   /home/yi-maru/Software/bismark_v0.14.3/bismark_methylation_extractor -s --comprehensive --bedGraph --counts /home/yi-maru/mystudy/doctor/hmC/TAB-seq/H1/H1_SRR449065/SRR449065_after_qualcont.fastq_bismark_bt2.deduplicated.sam &
+
+

@@ -1,0 +1,24 @@
+# Quality check
+   /usr/local/package/fastqc/FastQC.0.11.2/fastqc -f fastq /home/yi-maru/mystudy/mC/ES/ES_C3/SRR042410_after_qualcont.fastq &
+
+# Quality control
+   /home/yi-maru/Software/prinseq-lite-0.20.4/prinseq-lite.pl -min_qual_mean 20 -fastq /home/yi-maru/mystudy/mC/ES/ES_C1/SRR042408.fastq -out_format 3 -out_good /home/yi-maru/mystudy/mC/ES/ES_C1/SRR042408_minqualmean
+
+   /home/yi-maru/Software/prinseq-lite-0.20.4/prinseq-lite.pl -trim_qual_right 20 -fastq /home/yi-maru/mystudy/mC/ES/ES_C1/SRR042408_minqualmean.fastq -out_format 3 -out_good /home/yi-maru/mystudy/mC/ES/ES_C1/SRR042408_trimqualright
+ 
+  /home/yi-maru/Software/prinseq-lite-0.20.4/prinseq-lite.pl -min_len 20 -fastq /home/yi-maru/mystudy/mC/ES/ES_C1/SRR042408_trimqualright.fastq -out_format 3 -out_good /home/yi-maru/mystudy/mC/ES/ES_C1/SRR042408_after_qualcont
+
+# Mapping
+   /usr/local/package/bowtie2/2.2.2/bowtie2 -x /home/yi-maru/mystudy/Reference/hg19/Homo_sapiens/UCSC/hg19/Sequence/Bowtie2Index/genome -U /home/yi-maru/mystudy/mC/ES/ES_C1/SRR042408_after_qualcont.fastq -N 0 -S SRR042408_mapped.sam
+
+   grep -v "XS" /home/yi-maru/mystudy/mC/ES/ES_C1/SRR042408_mapped.sam > /home/yi-maru/mystudy/mC/ES/ES_C1/SRR042408_uniq_mapped.sam
+
+# sam to bam
+  samtools view -bS SRR042410_uniq_mapped.sam > SRR042410_uniq_mapped.bam &
+
+# sort bam_file
+  samtools sort SRR042411_uniq_mapped.bam SRR042411_uniq_mapped_sorted &
+
+# bam index
+  samtools index SRR042411_uniq_mapped_sorted.bam &
+

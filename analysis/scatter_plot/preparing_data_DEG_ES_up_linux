@@ -1,0 +1,31 @@
+  tail -n +2 combined_whole_factors.txt > nonhead_combined_whole_factors.txt
+
+  sort -k 1,1 nonhead_combined_whole_factors.txt | cat > out1.txt
+
+  sort -k 1,1 DEG_homer_ES_up.txt | cat > out2.txt
+
+
+#####
+
+  join -1 1 -2 1 -o 0 1.2 1.3 1.8 1.4 -e 0 out1.txt out2.txt > tmp.count.txt
+
+
+#####
+
+  echo "Gene_name HDF_1_RNA H1_2_RNA IMR90_5hmC H1_5hmC" > prepared_data_DEG_ES_up.txt
+  cat tmp.count.txt >> prepared_data_DEG_ES_up.txt
+
+  rm tmp* out* *nonhead*
+
+
+
+
+  
+
+
+  
+
+
+
+
+

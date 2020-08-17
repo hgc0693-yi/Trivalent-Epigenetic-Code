@@ -1,0 +1,16 @@
+# Create tag directory
+  /home/yi-maru/Software/homer/bin/makeTagDirectory ES_2_H1_input_tagdir -tbp 1 pre_makeTagDirectory_H3K23ac_ES_2_H1_input.bed -format bed &
+
+
+# Find peak & normalization
+  /home/yi-maru/Software/homer/bin/findPeaks ES_2_H1_tagdir -style histone -o auto -gsize 3000000000 -i ES_2_H1_input_tagdir &
+
+# annotation & quantifying
+  PATH="/home/yi-maru/Software/homer/bin:$PATH"
+  /home/yi-maru/Software/homer/bin/annotatePeaks.pl ES_2_H1_tagdir/regions.txt hg19 -d ES_2_H1_tagdir > ES_2_H1_tagdir/peak_annotation_result.txt &
+
+
+
+
+
+

@@ -1,0 +1,10 @@
+# Create tag directory
+  /home/yi-maru/Software/homer/bin/makeTagDirectory fibro_Donor_1_P3_tagdir -tbp 1 /home/yi-maru/mystudy/doctor/mC/fibro/fibro_Donor_1_P3/SRR1533797_uniq_mapped.sam -format sam &
+
+# Find peak & normalization
+  /home/yi-maru/Software/homer/bin/findPeaks /home/yi-maru/mC/research/peakcall_annotation/genebody/fibro_peakann/fibro_Donor_1_P3_tagdir -style histone -o auto -gsize 3000000000 -i /home/yi-maru/hmC/research/peakcall_annotation/genebody/fibro_hg19_peakann/IMR90_input_tagdir &
+
+# annotation & quantifying
+  /home/yi-maru/Software/homer/bin/annotatePeaks.pl /home/yi-maru/mC/research/peakcall_annotation/genebody/fibro_peakann/fibro_Donor_1_P3_tagdir/regions.txt hg19 -d /home/yi-maru/mC/research/peakcall_annotation/genebody/fibro_peakann/fibro_Donor_1_P3_tagdir > /home/yi-maru/mC/research/peakcall_annotation/genebody/fibro_peakann/fibro_Donor_1_P3_tagdir/peak_annotation_result_genebody.txt &
+
+

@@ -1,0 +1,27 @@
+# Quality check
+   /usr/local/package/fastqc/FastQC.0.11.2/fastqc -f fastq /home/yi-maru/mystudy/hmC/H1/H1_input/SRR299099.fastq &
+
+# Mapping
+   /usr/local/package/bowtie2/2.2.2/bowtie2 -x /home/yi-maru/mystudy/Reference/hg19/Homo_sapiens/UCSC/hg19/Sequence/Bowtie2Index/genome -U /home/yi-maru/mystudy/hmC/H1/H1_input/SRR299099.fastq -N 0 -S SRR299099_mapped.sam
+
+   grep -v "XS" /home/yi-maru/mystudy/hmC/H1/H1_input/SRR299099_mapped.sam > /home/yi-maru/mystudy/hmC/H1/H1_input/SRR299099_uniq_mapped.sam
+
+# sam to bam
+  samtools view -bS SRR299099_uniq_mapped.sam > SRR299099_uniq_mapped.bam &
+
+# sort bam_file
+  samtools sort SRR299099_uniq_mapped.bam SRR299099_uniq_mapped_sorted &
+
+# bam index
+  samtools index SRR299099_uniq_mapped_sorted.bam &
+
+
+
+
+
+  
+
+
+
+
+

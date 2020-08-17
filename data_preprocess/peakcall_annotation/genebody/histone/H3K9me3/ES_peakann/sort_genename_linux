@@ -1,0 +1,9 @@
+# remove header_row
+
+  tail -n +2 ES_1_H1_tagdir/peak_annotation_result.txt > ES_1_H1_tagdir/nonhead_peak_annotation_result.txt
+
+# sort gene_name
+
+  sort -k 16,16 -t $'\t' ES_1_H1_tagdir/nonhead_peak_annotation_result.txt | cat > ES_1_H1_tagdir/peak_annotation_result_sorted.txt
+
+  rm ES_1_H1_tagdir/nonhead*
